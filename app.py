@@ -6,12 +6,12 @@ import io
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for cross-origin requests (important for extensions)
+CORS(app)
 
-# Blocked or sensitive domains
+
 blocked_domains = ["facebook.com", "linkedin.com", "twitter.com", "bank", "login", "admin"]
 
-# Common UI/boilerplate words to exclude
+
 unwanted_phrases = [
     "home", "about", "contact", "services", "login", "register", "privacy", "terms",
     "disclaimer", "language", "search", "next", "previous", "menu", "footer", "copyright",
@@ -19,7 +19,7 @@ unwanted_phrases = [
 ]
 
 def is_collusive(text, all_seen):
-    # Avoid text blocks that are overly repeated (spammy/collusive)
+   
     if all_seen.count(text) > 1:
         return True
     return False
@@ -35,17 +35,15 @@ def scrape():
         if any(domain in url.lower() for domain in blocked_domains):
             return jsonify({"error": "Blocked or sensitive domain"}), 403
 
-        # Get page content
+  
         response = requests.get(url, timeout=10)
         soup = BeautifulSoup(response.text, "html.parser")
 
-        # Skip login or sensitive pages
+       
         if soup.find("input", {"type": "password"}):
             return jsonify({"error": "Sensitive page detected"}), 403
 
-        # ====================
-        # 📋 TABLE SCRAPER
-        # ====================
+     
         if scrape_type == "table":
             tables = soup.find_all("table")
             if not tables:
@@ -66,9 +64,7 @@ def scrape():
 
             return jsonify({"result": "\n\n".join(csv_files)})
 
-        # ====================
-        # 📝 TEXT SCRAPER
-        # ====================
+      
         elif scrape_type == "text":
             elements = soup.find_all(["p", "h1", "h2", "h3", "li", "article", "span"])
             all_texts = [el.get_text(strip=True) for el in elements]
