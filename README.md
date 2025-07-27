@@ -23,3 +23,5 @@ Built by **Mohanakrishnaa Nachimuthu** for easy, secure, and filtered web scrapi
 ```bash
 git clone https://github.com/yourusername/mr-web-scraper.git
 cd mr-web-scraper
+
+### 🔹 2. Clone the repository
