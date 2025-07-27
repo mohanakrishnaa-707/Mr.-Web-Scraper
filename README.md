@@ -23,5 +23,14 @@ Built by **Mohanakrishnaa Nachimuthu** for easy, secure, and filtered web scrapi
 ```bash
 git clone https://github.com/yourusername/mr-web-scraper.git
 cd mr-web-scraper
+```
+After installing the requirements.txt
 
-### 🔹 2. Clone the repository
+### 🔹 2. To Run
+
+ - Open the editer terminal and run
+
+
+```bash
+python app.py
+
