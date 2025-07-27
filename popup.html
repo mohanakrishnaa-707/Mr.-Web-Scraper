@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Scraper</title>
+  <style>
+    body { font-family: Arial; padding: 10px; width: 220px; background-color: aliceblue; border-radius: 20px;}
+    button, select { width: 100%; padding: 8px; margin-top: 5px; }
+  </style>
+</head>
+<body>
+ <center> <h3>Web Scraper</h3></center>
+  <select id="mode">
+    <option value="table">Scrape Table as CSV</option>
+    <option value="text">Scrape Text as TXT</option>
+  </select>
+  <button id="scrapeBtn" style="background-color: lightblue; border-radius: 10px;">Download</button>
+  <p style="font-size: 12px; color: red;">
+    Only use on public pages. No login content.
+  </p>
+  <script src="popup.js"></script>
+</body>
+</html>
